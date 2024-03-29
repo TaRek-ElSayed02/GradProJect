@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('NewPassword')->nullable();
             $table->string('Email')->nullable();
             $table->string('Password')->nullable();
-            $table->foreignId('Alarm_id')->default(0)->references('id')->on('alarms');
-            $table->foreignId('Notification_id')->default(0)->references('id')->on('notifications');
+            $table->foreignId('Alarm_id')->default(1)->references('id')->on('alarms');
+            $table->foreignId('Notification_id')->default(1)->references('id')->on('notifications');
             $table->string('Password_Confirmation');
             $table->timestamps();
            // $table->foreignId('alarm_id')->constrained()->onDelete('cascade');
