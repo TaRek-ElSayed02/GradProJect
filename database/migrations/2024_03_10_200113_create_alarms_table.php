@@ -1,33 +1,33 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateAlarmsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::create('alarms', function (Blueprint $table) {
             $table->id()->unsigned()->foreign('Doctor.Alarm_id');
             $table->string('Message');
             $table->timestamp('Time');
             $table->foreignId('doctor_id')->constrained()->onDelete('cascade');
         });
-        // Schema::enableForeignKeyConstraints();
+
+        // Create foreign key constraint separately
+        Schema::table('alarms', function (Blueprint $table) {
+            $table->foreignId('doctor_id')
+                  ->constrained('doctors')
+                  ->onDelete('cascade');
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::disableForeignKeyConstraints();
+        Schema::table('alarms', function (Blueprint $table) {
+            $table->dropForeign(['doctor_id']);
+        });
+
         Schema::dropIfExists('alarms');
-        // Schema::enableForeignKeyConstraints(); 
     }
-};
+}
