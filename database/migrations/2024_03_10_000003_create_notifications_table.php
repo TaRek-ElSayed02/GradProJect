@@ -16,7 +16,6 @@
                 $table->id()->unsigned()->foreign('Doctor.Notification_id');
                 $table->string('Message');
                 $table->timestamp('Time');
-                $table->foreignId('doctor_id')->constrained()->onDelete('cascade');
             });
             Schema::enableForeignKeyConstraints();
         }
