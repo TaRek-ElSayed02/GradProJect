@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->smallInteger('Oxygen Rate');
             $table->smallInteger('Heart Rate');
-            $table->foreignId('oxygen_generator_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('oxygen_generator_id')->constrained()->onDelete('cascade');
         });
         
         Schema::enableForeignKeyConstraints();
