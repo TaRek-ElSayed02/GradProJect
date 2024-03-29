@@ -24,7 +24,7 @@ return new class extends Migration
            // $table->foreignId('alarm_id')->constrained()->onDelete('cascade');
             //$table->foreignId('notification_id')->constrained()->onDelete('cascade');
         });
-        Schema::enableForeignKeyConstraints();
+        // Schema::enableForeignKeyConstraints();
     }
 
     /**

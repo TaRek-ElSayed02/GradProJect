@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('Time');
             $table->foreignId('doctor_id')->constrained()->onDelete('cascade');
         });
-        Schema::enableForeignKeyConstraints();
+        // Schema::enableForeignKeyConstraints();
     }
 
     /**
