@@ -11,15 +11,14 @@ class CreateAlarmsTable extends Migration
             $table->id()->unsigned()->foreign('Doctor.Alarm_id');
             $table->string('Message');
             $table->timestamp('Time');
-            $table->foreignId('doctor_id')->constrained()->onDelete('cascade');
         });
 
-        // Create foreign key constraint separately
-        Schema::table('alarms', function (Blueprint $table) {
-            $table->foreignId('doctor_id')
-                  ->constrained('doctors')
-                  ->onDelete('cascade');
-        });
+        // // Create foreign key constraint separately
+        // Schema::table('alarms', function (Blueprint $table) {
+        //     $table->foreignId('doctor_id')
+        //           ->constrained('doctors')
+        //           ->onDelete('cascade');
+        // });
     }
 
     public function down()
