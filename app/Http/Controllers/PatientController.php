@@ -65,6 +65,7 @@ class PatientController extends Controller
             return response()->json(['error' => 'Unauthorized' ], 401);
         }
     }
+    #بحرق ميتين ام المشروووووووووووووووووووووووع
     
     public function createToken($token, $email, $password)
     {
