@@ -5,6 +5,7 @@ use App\Http\Controllers\DoctorController;
 use App\Models;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,4 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(DoctorController::class)->group(function(){
     Route::post('register','register');
     Route::post('login','login');
+});
+Route::controller(PatientController::class)->group(function(){
+    Route::post('pregister','pregister');
+    Route::post('plogin','plogin');
 });

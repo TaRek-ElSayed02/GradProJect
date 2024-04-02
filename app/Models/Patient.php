@@ -7,19 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Laravel\Sanctum\HasApiTokens;
+//use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-
-
+//use Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 class Patient extends Model
 {
     use HasFactory;
     use HasApiTokens;
     use Notifiable;
-    
-    protected $fillable = ['Name', 'Email', 'Password', 'Doctor_id', 'OxyGenerator_id', 'Age', 'Height', 'Weight', 'Temperature', 'Password_Confirmation'];
+  
+    protected $hidden = [
+        'Password', 'remember_token',
+    ];
+
+    // Specify the guard name
+   // protected $guard = 'patient';
+    protected $fillable = ['Name', 'Email', 'Password', 'Doctor_id', 'OxyGenerator_id', 'Age', 'Height', 'Weight', 'Temperature'];
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
@@ -44,7 +50,8 @@ class Patient extends Model
     }
     public function getJWTIdentifier()
     {
-        return $this->getKey();
+        //return $this->getKey();
+        return $this->email;
     }
     public function getJWTCustomClaims()
     {

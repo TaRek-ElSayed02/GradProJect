@@ -18,10 +18,7 @@ return [
         'passwords' => 'doctors',
     ],
     
-    'defaults' => [
-        'guard' => 'api',
-        'passwords' => 'patients',
-    ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -49,6 +46,11 @@ return [
             'driver' => 'jwt',
             'provider' => 'doctors',
             'hash'=>false
+        ],
+        'patient' => [
+            'driver' => 'session',
+            'provider' => 'patients',
+           // 'hash'=>false
         ],
         #------------hashed -------commented
         //'api' => [
@@ -90,6 +92,10 @@ return [
         'doctors' => [ // Add this line
             'driver' => 'eloquent',
             'model' => App\Models\Doctor::class, // Add this line
+        ],
+        'patients' => [ // Add this line
+            'driver' => 'eloquent',
+            'model' => App\Models\Patient::class, // Add this line
         ],
     ],
 
