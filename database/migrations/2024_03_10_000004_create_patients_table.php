@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('Password')->nullable();
             //$table->bigInteger('Doctor_id');
             $table->foreignId('Doctor_id')->references('id')->on('doctors');
-            $table->bigInteger('OxyGenerator_id');
+            $table->bigInteger('OxyGenerator_id')->nullable();
             $table->smallInteger('Age')->nullable();
             $table->smallInteger('Height')->nullable();
             $table->smallInteger('Weight')->nullable();
