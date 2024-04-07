@@ -81,7 +81,7 @@ class PatientController extends Controller
         ]);
     }
   
-
+#commint
     public function form(Request $request, $id)
     {
         
