@@ -48,9 +48,13 @@ return [
             'hash'=>false
         ],
         'patient' => [
-            'driver' => 'session',
+            'driver' => 'jwt',
             'provider' => 'patients',
            // 'hash'=>false
+        ],
+        'doctor' => [
+            'driver' => 'jwt',
+            'provider' => 'doctors',
         ],
         #------------hashed -------commented
         //'api' => [

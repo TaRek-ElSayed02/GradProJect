@@ -7,10 +7,13 @@ use App\Helpers\ApiResponse;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
-
+#added
+use Tymon\JWTAuth\Facades\JWTAuth;
+#---------
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+
 
 class PatientController extends Controller
 {
@@ -65,7 +68,7 @@ class PatientController extends Controller
             return response()->json(['error' => 'Unauthorized' ], 401);
         }
     }
-    #بحرق ميتين ام المشروووووووووووووووووووووووع
+    
     
     public function createToken($token, $email, $password)
     {
@@ -78,4 +81,41 @@ class PatientController extends Controller
         ]);
     }
   
+
+    public function form(Request $request, $id)
+    {
+        
+        $patient = Patient::find($id);
+    
+        if (!$patient) {
+            return response()->json(['error' => 'Patient not found'], 404);
+        }
+        // Log the request data
+        \Log::info('Request data:', [
+            'Name' => $request->Name,
+            'Age' => $request->Age,
+            'Height' => $request->Height,
+            'Weight' => $request->Weight,
+            'Temperature' => $request->Temperature,
+            'Phonenumber' => $request->Phonenumber
+        ]);
+    
+        // Update patient's profile
+        $patient->update([
+            'Name' => $request->Name,
+            'Age' => $request->Age,
+            'Height' => $request->Height,
+            'Weight' => $request->Weight,
+            'Temperature' => $request->Temperature,
+            'Phonenumber' => $request->Phonenumber
+        ]);
+    
+        return response()->json(['message' => 'Profile updated successfully'], 200);
+    }
+
+
+   #logout---------------------------------------------->>>>>
+  
+   
+    
 }

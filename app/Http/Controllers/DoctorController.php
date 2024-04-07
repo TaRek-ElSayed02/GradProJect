@@ -7,7 +7,10 @@ use App\Helpers\ApiResponse;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+#added
 
+
+#------
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -76,4 +79,16 @@ class DoctorController extends Controller{
     }
     
 
+    #logout
+   public function logout(Request $request){
+    
+    $authenticatedDoctor = Auth::guard('doctor')->user();
+
+    // Delete the current access token
+    $authenticatedDoctor->currentAccessToken()->delete();
+
+    // Return a response indicating successful logout
+    return ApiResponse::sendResponse(204, 'Logged out successfully');
+
+   }
 }
