@@ -79,7 +79,7 @@ class DoctorController extends Controller{
     }
     
 
-    #logout
+    #logout for doctor
    public function logout(Request $request){
     
     $authenticatedDoctor = Auth::guard('doctor')->user();
