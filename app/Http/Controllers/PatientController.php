@@ -114,8 +114,40 @@ class PatientController extends Controller
     }
 
 
-   #logout---------------------------------------------->>>>>
-  
+   #retrieve patient info---------------------------------------------->>>>>
+   public function patientinfo()
+   {
+       $patients = Patient::all(); // Retrieve all patients
+       return response()->json($patients);
+   }
    
+
+   #logout
+   public function plogout(Request $request)
+    {
+        $acessToken = $request->bearerToken();
+        $token = PersonalAccessToken::findToken($acessToken);
+        $token->delete();
+        return response(
+            [
+                'message' =>'Patient logout successfuly',
+                'status' => 'success'
+            ], status:200);
+    }
+
+    #search
+    public function search($Name)
+    {
+        return Patient::where("Name",$Name)->get();
+
+    }
+
+
+    #list
+    public function list(Request $request)
+    {
+        $patients = Patient::take(10)->get(); // Retrieve 10 patients
+        return response()->json(['patients' => $patients], 200);
+    }          
     
 }

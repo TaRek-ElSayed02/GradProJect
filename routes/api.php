@@ -29,7 +29,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(DoctorController::class)->group(function(){
     Route::post('register','register');
     Route::post('login','login');
-    Route::post('/logout','logout')->middleware('auth:doctor');
+    Route::post('/logout','logout');
+    
 });
 
 
@@ -41,6 +42,10 @@ Route::controller(PatientController::class)->group(function(){
     Route::post('pregister','pregister');
     Route::post('plogin','plogin');
     Route::post('patients/{id}/form', 'form');
+    Route::get('patientinfo','patientinfo');
+    Route::post('/plogout','plogout');
+    Route::get('search/{Name}','search');
+    Route::get('list','list');
     
 });
 

@@ -80,15 +80,17 @@ class DoctorController extends Controller{
     
 
     #logout for doctor
-   public function logout(Request $request){
-    
-    $authenticatedDoctor = Auth::guard('doctor')->user();
+    public function logout(Request $request)
+    {
+        $acessToken = $request->bearerToken();
+        $token = PersonalAccessToken::findToken($acessToken);
+        $token->delete();
+        return response(
+            [
+                'message' =>'Doctor logout successfuly',
+                'status' => 'success'
+            ], status:200
+        );
+    }
 
-    // Delete the current access token
-    $authenticatedDoctor->currentAccessToken()->delete();
-
-    // Return a response indicating successful logout
-    return ApiResponse::sendResponse(204, 'Logged out successfully');
-
-   }
 }
