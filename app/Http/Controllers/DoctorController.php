@@ -8,7 +8,8 @@ use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 #added
-
+#added token 
+use Laravel\Sanctum\PersonalAccessToken;
 
 #------
 use Illuminate\Support\Facades\Validator;
