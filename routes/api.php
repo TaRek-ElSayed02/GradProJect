@@ -50,4 +50,4 @@ Route::controller(PatientController::class)->group(function(){
 
 
 #Radio button screen 
-Route::post('/user-choice', [UserChoiceController::class, 'store']);
+Route::post('/user-choice/{patientId}', [UserChoiceController::class, 'store']);
