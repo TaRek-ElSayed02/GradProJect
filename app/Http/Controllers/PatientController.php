@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 #added
 use Tymon\JWTAuth\Facades\JWTAuth;
+#added token 
+use Laravel\Sanctum\PersonalAccessToken;
 #---------
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
