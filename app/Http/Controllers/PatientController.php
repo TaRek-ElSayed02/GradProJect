@@ -150,6 +150,8 @@ class PatientController extends Controller
     {
         $patients = Patient::take(10)->get(); // Retrieve 10 patients
         return response()->json(['patients' => $patients], 200);
-    }          
+    }      
+    
+    #this is patient when choose one disease from radio button screen
     
 }

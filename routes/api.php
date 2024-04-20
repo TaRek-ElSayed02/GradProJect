@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserChoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +48,6 @@ Route::controller(PatientController::class)->group(function(){
     
 });
 
+
+#Radio button screen 
+Route::post('/user-choice', [UserChoiceController::class, 'store']);
