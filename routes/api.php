@@ -45,7 +45,6 @@ Route::controller(PatientController::class)->group(function(){
     Route::post('/plogout','plogout');
     Route::get('search/{Name}','search');
     Route::get('list','list');
-    
 });
 
 

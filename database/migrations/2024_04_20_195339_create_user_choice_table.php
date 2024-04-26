@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::create('user_choice', function (Blueprint $table) {
+        Schema::create('user_choices', function (Blueprint $table) {
             $table->id();
             $table->string('choice');
             $table->foreignId('Patient_id')->references('id')->on('patients')->constrained()->onDelete('cascade');
