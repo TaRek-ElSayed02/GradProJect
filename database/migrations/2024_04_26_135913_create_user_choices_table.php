@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('user_choices', function (Blueprint $table) {
             $table->id();
             $table->string('choice');
-            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
