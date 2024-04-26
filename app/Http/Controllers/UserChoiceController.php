@@ -27,6 +27,6 @@ class UserChoiceController extends Controller
         $choice->patient_id = $patientId; // Associate the choice with the patient
         $choice->save();
 
-        return response()->json(['message' => 'Choice stored successfully'], 201);
+        return response()->json(['message' => 'Choice stored successfully', 'choice' => $choice], 201);
     }
 }
