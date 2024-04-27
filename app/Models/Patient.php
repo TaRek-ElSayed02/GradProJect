@@ -57,6 +57,10 @@ class Patient extends Model
     {
         return [];
     }
+    public function userChoice()
+    {
+        return $this->hasOne(UserChoice::class);
+    }
 
  
 }
