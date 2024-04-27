@@ -94,6 +94,8 @@ class PatientController extends Controller
         if (!$patient) {
             return response()->json(['error' => 'Patient not found'], 404);
         }
+
+        $phonenumber = $request->phonenumber;
         // Log the request data
         \Log::info('Request data:', [
             'Name' => $request->Name,
@@ -117,7 +119,9 @@ class PatientController extends Controller
             
         ]);
     
-        return response()->json(['message' => 'Profile updated successfully'], 200);
+        return response()->json(['message' => 'Profile updated successfully',
+        'phonenumber' => $phonenumber,
+    ], 200);
     }
 
 
