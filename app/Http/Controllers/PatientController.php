@@ -95,7 +95,7 @@ class PatientController extends Controller
             return response()->json(['error' => 'Patient not found'], 404);
         }
 
-        $phonenumber = $request->phonenumber;
+        $Phonenumber = $request->Phonenumber;
         // Log the request data
         \Log::info('Request data:', [
             'Name' => $request->Name,
@@ -103,7 +103,7 @@ class PatientController extends Controller
             'Height' => $request->Height,
             'Weight' => $request->Weight,
             'Temperature' => $request->Temperature,
-            'Phonenumber' => $request->phonenumber,
+            'Phonenumber' => $request->Phonenumber,
             
         ]);
         
@@ -115,11 +115,11 @@ class PatientController extends Controller
             'Height' => $request->Height,
             'Weight' => $request->Weight,
             'Temperature' => $request->Temperature,
-            'Phonenumber' => $request->phonenumber, 
+            'Phonenumber' => $request->Phonenumber, 
         ]);
     
         return response()->json(['message' => 'Profile updated successfully',
-        'phonenumber' => $phonenumber,
+        'Phonenumber' => $Phonenumber,
     ], 200);
     }
 
