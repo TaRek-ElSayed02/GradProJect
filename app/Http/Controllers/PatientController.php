@@ -32,17 +32,19 @@ class PatientController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         }
+        $passwordConfirmation = $request->Password_Confirmation;
 
         $patient= Patient::create(array_merge(
             $validator->validated(), 
             ['Password' => bcrypt($request->Password)],
             #added
-            ['Password_Confirmation' => bcrypt($request->Password_Confirmation)],
+            ['Password_Confirmation' => $request->Password_Confirmation],
  
         ));
         return response()->json([
             'message' => 'Patient successfully registered',
-            'Patient' => $patient
+            'Patient' => $patient,
+            'Password_Confirmation' => $passwordConfirmation,
         ], 201);
     }
 
@@ -100,6 +102,7 @@ class PatientController extends Controller
             'Weight' => $request->Weight,
             'Temperature' => $request->Temperature,
             'Phonenumber' => $request->phonenumber,
+            
         ]);
         
     
@@ -111,6 +114,7 @@ class PatientController extends Controller
             'Weight' => $request->Weight,
             'Temperature' => $request->Temperature,
             'Phonenumber' => $request->phonenumber,
+            
         ]);
     
         return response()->json(['message' => 'Profile updated successfully'], 200);
@@ -156,3 +160,5 @@ class PatientController extends Controller
     #this is patient when choose one disease from radio button screen
     
 }
+
+
