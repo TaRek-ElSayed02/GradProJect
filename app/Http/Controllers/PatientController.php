@@ -99,8 +99,9 @@ class PatientController extends Controller
             'Height' => $request->Height,
             'Weight' => $request->Weight,
             'Temperature' => $request->Temperature,
-            'Phonenumber' => $request->Phonenumber,
+            'Phonenumber' => $request->phonenumber,
         ]);
+        
     
         // Update patient's profile
         $patient->update([
@@ -109,7 +110,7 @@ class PatientController extends Controller
             'Height' => $request->Height,
             'Weight' => $request->Weight,
             'Temperature' => $request->Temperature,
-            'Phonenumber' => $request->Phonenumber,
+            'Phonenumber' => $request->phonenumber,
         ]);
     
         return response()->json(['message' => 'Profile updated successfully'], 200);
