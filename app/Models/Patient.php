@@ -25,7 +25,7 @@ class Patient extends Model
 
     // Specify the guard name
    // protected $guard = 'patient';
-    protected $fillable = ['Name', 'Email', 'Password', 'Doctor_id', 'OxyGenerator_id', 'Age', 'Height', 'Weight', 'Temperature'];
+    protected $fillable = ['Name', 'Email', 'Password', 'Doctor_id', 'OxyGenerator_id', 'Age', 'Height', 'Weight', 'Temperature','Password_Confirmation','phonenumber'];
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
