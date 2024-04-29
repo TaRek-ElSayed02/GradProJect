@@ -47,6 +47,9 @@ Route::controller(PatientController::class)->group(function(){
     Route::get('list','list');
 });
 
+#Patient delete according to id 
+Route::delete('patients/{id}', 'PatientController@destroy');
+
 
 #Radio button screen 
 Route::post('/user-choice/{patientId}', [UserChoiceController::class, 'store']);

@@ -161,6 +161,19 @@ class PatientController extends Controller
     }      
     
     #this is patient when choose one disease from radio button screen
+
+    #delete patient according to his id 
+    public function destroy($id)
+    {
+        try {
+            $patient = Patient::findOrFail($id);
+            $patient->delete();
+            
+            return response()->json(['message' => 'Patient deleted successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to delete patient'], 500);
+        }
+    }
     
 }
 
