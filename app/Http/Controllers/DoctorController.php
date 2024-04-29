@@ -39,9 +39,19 @@ class DoctorController extends Controller{
             ['Password_Confirmation' => bcrypt($request->Password_Confirmation)],
  
         ));
+
+        #added
+        $token = $doctor->createToken('DoctorAuthToken')->plainTextToken;
+
+
         return response()->json([
-            'message'=>"user successfully registed",
-            'Doctor'=>$doctor ],201);
+            'message' => "Doctor successfully registered",
+            'Doctor' => $doctor,
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,
+        ],201);
+    
     }
 
     public function login(Request $request)

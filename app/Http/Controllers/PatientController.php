@@ -42,11 +42,18 @@ class PatientController extends Controller
             ['Password_Confirmation' => $request->Password_Confirmation],
  
         ));
+
+        #added
+        $token = $patient->createToken('PatientAuthToken')->plainTextToken;
+
+
         return response()->json([
-            'message' => 'Patient successfully registered',
+            'message' => "Patient successfully registered",
             'Patient' => $patient,
-            'Password_Confirmation' => $passwordConfirmation,
-        ], 201);
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,
+        ],201);
         
     }
 
