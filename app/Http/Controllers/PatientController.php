@@ -21,6 +21,7 @@ class PatientController extends Controller
 {
     public function pregister(Request $request)
     {
+        /*
         $validator = Validator::make($request->all(), [
             'Doctor_id' => 'required|exists:doctors,id',
             'Email' => 'required|string|email|unique:patients,Email',
@@ -46,6 +47,43 @@ class PatientController extends Controller
             'Patient' => $patient,
             'Password_Confirmation' => $passwordConfirmation,
         ], 201);
+        */
+        $validator = Validator::make($request->all(), [
+            'Doctor_id' => 'required|exists:doctors,id',
+            'Email' => 'required|string|email|unique:patients,Email',
+            'Password' => 'required|string|min:7',
+            'Password_Confirmation' => 'required|string|min:7|same:Password',
+            // Add other validation rules if needed
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+    
+        $patient = Patient::create([
+            'Doctor_id' => $request->input('Doctor_id'),
+            'Email' => $request->input('Email'),
+            'Password' => bcrypt($request->input('Password')),
+        ]);
+    
+        $token = $patient->createToken('PatientAuthToken')->plainTextToken;
+    
+        return response()->json([
+            'message' => "Patient successfully registered",
+            'Patient' => $patient,
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,],201);
+    
+
+
+
+
+
+
+
+
+
     }
 
     public function plogin(Request $request)
