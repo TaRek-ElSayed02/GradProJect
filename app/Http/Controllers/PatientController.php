@@ -88,7 +88,7 @@ class PatientController extends Controller
 #commint
     public function form(Request $request, $id)
     {
-       /* 
+        
         $patient = Patient::find($id);
     
         if (!$patient) {
@@ -122,34 +122,9 @@ class PatientController extends Controller
         'PhoneNumber' => $PhoneNumber,
     ], 200);
 
-*/
-     // Validate the incoming request data
-     $validatedData = $request->validate([
-        'Name' => 'required|string',
-        'Age' => 'nullable|integer|min:0',
-        'Height' => 'nullable|integer|min:0',
-        'Weight' => 'nullable|integer|min:0',
-        'Temperature' => 'nullable|numeric|min:0',
-        'PhoneNumber' => 'nullable|string|max:20', // Adjust max length as needed
-     ]);
 
-    // Retrieve the patient by ID
-    $patient = Patient::find($id);
 
-    // Check if the patient exists
-    if (!$patient) {
-        return response()->json(['error' => 'Patient not found'], 404);
-    }
-
-    // Log the request data
-    \Log::info('Request data:', $validatedData);
-
-    // Update patient's profile
-    $patient->update($validatedData);
-
-    // Return success response
-    return response()->json(['message' => 'Profile updated successfully'], 200);
-
+    
 
     }
 
