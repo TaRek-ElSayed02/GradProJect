@@ -23,7 +23,6 @@ class DoctorController extends Controller{
 
     public function register(Request $request)
     {
-        
         $validator= Validator::make($request->all(),[
             'Email'=>'required|string|email|unique:doctors,Email',
             'Password'=>'required|string|min:7',
@@ -43,10 +42,8 @@ class DoctorController extends Controller{
         return response()->json([
             'message'=>"user successfully registed",
             'Doctor'=>$doctor ],201);
-
-
-
     }
+
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -72,6 +69,8 @@ class DoctorController extends Controller{
         }
     }
     
+
+    
     public function createToken($token, $email, $password)
     {
         return response()->json([
@@ -82,6 +81,7 @@ class DoctorController extends Controller{
             'password' => $password,
         ]);
     }
+
     
 
     #logout for doctor
