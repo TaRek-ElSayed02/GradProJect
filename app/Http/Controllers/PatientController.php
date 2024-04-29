@@ -47,6 +47,7 @@ class PatientController extends Controller
             'Patient' => $patient,
             'Password_Confirmation' => $passwordConfirmation,
         ], 201);
+        #يحرق ام المشروع 
     }
 
     public function plogin(Request $request)
