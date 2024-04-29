@@ -23,7 +23,7 @@ class DoctorController extends Controller{
 
     public function register(Request $request)
     {
-        /*
+        
         $validator= Validator::make($request->all(),[
             'Email'=>'required|string|email|unique:doctors,Email',
             'Password'=>'required|string|min:7',
@@ -43,38 +43,6 @@ class DoctorController extends Controller{
         return response()->json([
             'message'=>"user successfully registed",
             'Doctor'=>$doctor ],201);
-
-*/
-
-
-$validator = Validator::make($request->all(), [
-    'Email' => 'required|string|email|unique:doctors,Email',
-    'Password' => 'required|string|min:7',
-    'Password_Confirmation' => 'required|string|min:7|same:Password',
-]);
-
-if ($validator->fails()) {
-    return response()->json($validator->errors()->toJson(), 400);
-}
-
-$doctor = Doctor::create([
-    'Email' => $request->input('Email'),
-    'Password' => bcrypt($request->input('Password')),
-    'Password_Confirmation' => bcrypt($request->Password_Confirmation)
-]);
-
-$token = $doctor->createToken('DoctorAuthToken')->plainTextToken;
-
-return response()->json([
-    'message' => "Doctor successfully registered",
-    'Doctor' => $doctor,
-    'access_token' => $token,
-    'token_type' => 'bearer',
-    'expires_in' => auth()->factory()->getTTL() * 60,],201);
-
-
-
-
 
 
 
