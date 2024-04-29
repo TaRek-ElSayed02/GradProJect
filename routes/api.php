@@ -45,10 +45,11 @@ Route::controller(PatientController::class)->group(function(){
     Route::post('/plogout','plogout');
     Route::get('search/{Name}','search');
     Route::get('list','list');
+    Route::delete('patients/{id}','destroy');
 });
 
 #Patient delete according to id 
-Route::delete('patients/{id}', 'PatientController@destroy');
+#Route::delete('patients/{id}', 'PatientController@destroy');
 
 
 #Radio button screen 
