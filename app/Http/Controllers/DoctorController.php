@@ -108,4 +108,24 @@ class DoctorController extends Controller{
         );
     }
 
+    #to retrieve doctor info 
+    public function doctorinfo()
+   {
+       $doctor = Doctor::all(); // Retrieve all doctor
+       return response()->json($doctor);
+   }
+
+   #to delete doctor according to his id
+   public function destroy($id)
+    {
+        try {
+            $doctor = Doctor::findOrFail($id);
+            $doctor->delete();
+            
+            return response()->json(['message' => 'Doctor deleted successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to delete doctor'], 500);
+        }
+    }
+
 }
