@@ -9,6 +9,10 @@ use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserChoiceController;
+#added for model زفت 
+use App\Http\Controllers\SensorDataController;
+
+Route::get('/predict', [SensorDataController::class, 'makePrediction']);
 
 /*
 |--------------------------------------------------------------------------

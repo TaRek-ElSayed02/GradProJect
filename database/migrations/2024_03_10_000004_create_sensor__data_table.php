@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('sensor__data', function (Blueprint $table) {
             $table->id();
-            $table->smallInteger('Oxygen Rate');
-            $table->smallInteger('Heart Rate');
+            $table->smallInteger('oxygen_rate');
+            $table->smallInteger('heart_rate');
+            $table->smallInteger('clieus');
+            $table->float('prediction')->nullable(); // Column to store the prediction result
+            $table->timestamps();
             // $table->foreignId('oxygen_generator_id')->constrained()->onDelete('cascade');
         });
         

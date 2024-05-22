@@ -12,7 +12,8 @@ class Sensor_Data extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['Oxygen Rate', 'Heart Rate'];
+    protected $fillable = ['Oxygen_Rate', 'Heart_Rate','clieus',
+    'prediction'];
 
     public function oxygenGenerator()
     {
