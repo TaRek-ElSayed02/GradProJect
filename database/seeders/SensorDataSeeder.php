@@ -14,11 +14,12 @@ class SensorDataSeeder extends Seeder
     public function run(): void
     {
         
+     /*   
         Sensor_Data::create([
-            'oxygen_rate' => 88,
-            'heart_rate' => 111,
-            'clieus' => 38,
+            'oxygen_rate' => 89,
+            'heart_rate' => 77,
+            'clieus' => 37,
         ]);
-
+*/
     }
 }
